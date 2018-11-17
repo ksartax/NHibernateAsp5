@@ -1,0 +1,53 @@
+﻿@model NHibernateExample.ViewModel.UsersViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(el => el.Users[0].Id)</th>
+                    <th>@Html.DisplayNameFor(el => el.Users[0].FirstName)</th>
+                    <th>@Html.DisplayNameFor(el => el.Users[0].LastName)</th>
+                    <th>@Html.DisplayNameFor(el => el.Users[0].City)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.City</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+        @using (Html.BeginForm("AddUser", "Home", FormMethod.Post))
+        {
+            @Html.Label("Imie")
+            @Html.TextBox("FirstName")
+            @Html.Label("Nazwisko")
+            @Html.TextBox("LastName")
+            @Html.Label("Miasto")
+            @Html.TextBox("City")
+
+            <input type="submit" value="Zapisz" />
+        }
+    </div>
+    <div class="col-md-4">
+        
+    </div>
+</div>
